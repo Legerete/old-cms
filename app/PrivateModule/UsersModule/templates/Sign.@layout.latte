@@ -16,11 +16,13 @@
 
 	<title>CMS</title>
 
+
+	{control css}
 	<!-- Bootstrap core CSS -->
 
-	<link href="{$basePath}/PrivateModule/css/bootstrap.min.css" rel="stylesheet">
+	{*<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
 
-	<link href="{$basePath}/PrivateModule/fonts/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{$basePath}/css/font-awesome.min.css" rel="stylesheet">*}
 	<link href="{$basePath}/PrivateModule/css/animate.min.css" rel="stylesheet">
 
 	<!-- Custom styling plus plugins -->
@@ -56,5 +58,7 @@
 		</div>
 	{/snippet}
 	{include #content}
+
+	{control js}
 </body>
 </html>

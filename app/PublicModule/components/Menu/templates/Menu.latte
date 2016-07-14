@@ -11,7 +11,7 @@
 		{if $depth < $item->getDepth()}
 			<ul class="dropdown-menu" role="menu">
 		{else}
-			{"</li>\n</ul>\n"|noescape|repeat:($depth - $item->getDepth()}</li>
+			{"</li></ul>"|noescape|repeat:($depth - $item->getDepth())}</li>
 		{/if}
 	{/if}
 
@@ -47,6 +47,6 @@
 		{/if}
 		{var $depth = $item->getDepth()}
 	{/foreach}
-	{!"</li>\n</ul>"|repeat:($depth +1)}
+	{"</li></ul>"|noescape|repeat:($depth +1)}
 </ul>
 {/block}

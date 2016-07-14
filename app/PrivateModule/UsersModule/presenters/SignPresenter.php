@@ -1,29 +1,40 @@
 <?php
 
 namespace App\PrivateModule\UsersModule\Presenter;
+use App\PrivateModule\BasePresenter;
 use Nette\Application\ForbiddenRequestException;
 use Doctrine\DBAL\Exception\ConnectionException;
+use Nette\Application\UI\Form;
 
 /**
  * @author Petr Besir Horacek <sirbesir@gmail.com>
  * Sign in/out presenters.
  */
-class SignPresenter extends \App\Presenters\BasePresenter
+class SignPresenter extends BasePresenter
 {
+	public function renderIn()
+	{
+		if ($this->getUser()->isLoggedIn()) {
+			$this->redirect(':Private:Dashboard:Dashboard:');
+		}
+	}
+
 
 	/**
 	 * Sign-in form factory.
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
-	 * @return Nette\Application\UI\Form
+	 * @return Form
 	 */
 	protected function createComponentSignInForm()
 	{
 		$form = new \Nette\Application\UI\Form;
 		$form->addText('username', 'Uživatelské jméno:')
+			->setAttribute('placeholder', 'Uživatelské jméno')
 			->setDefaultValue(!$this->getHttpRequest()->getQuery('username')?:$this->getHttpRequest()->getQuery('username'))
 			->setRequired('Vyplňte uživatelské jméno.');
 
 		$form->addPassword('password', 'Heslo:')
+			->setAttribute('placeholder', 'Heslo')
 			->setRequired('Vyplňte heslo.');
 
 		$form->addCheckbox('remember');
@@ -33,8 +44,6 @@ class SignPresenter extends \App\Presenters\BasePresenter
 
 		$form->onError[] = array($this, 'errorForm');
 		$form->onSuccess[] = array($this, 'signInFormSubmitted');
-
-//		echo \DatabaseAuthenticator::calculateHash('zaheslovano');
 
 		return $form;
 	}

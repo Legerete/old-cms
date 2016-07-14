@@ -6,6 +6,8 @@ use App\service\Mailer;
 use Kdyby\Doctrine\EntityManager;
 use Nette\InvalidArgumentException;
 use Nette\Security\User;
+use Nette\Utils\DateTime;
+use Nette\Utils\Random;
 
 /**
  * Users service
@@ -38,6 +40,15 @@ class Users extends \Nette\Object
 	public function findUser($username)
 	{
 		return $this->userRespository()->findOneBy(array('username' => $username));
+	}
+
+	public function findUserByChangePasswordHash($hashId, $hashSecred)
+	{
+		return $this->userRespository()->findOneBy([
+			'hashChangePasswordId' => $hashId,
+			'hashChangePasswordSecred' => $hashSecred,
+			'hashChangePasswordExpirationDate >=' => new DateTime(),
+		]);
 	}
 
 	/**
@@ -162,28 +173,47 @@ class Users extends \Nette\Object
 		throw new InvalidArgumentException('$data[\'id\'] not set. Can\'t find user!');
 	}
 
+
+	public function updatePassword(\App\Entity\User $user, $password)
+	{
+		$user->setPassword($password);
+		
+		$this->entityManager->flush();
+	}
+
+
+
 	/**
-	 * Reset user password
+	 * Set user password hash for update password
 	 * @author Petr Horacek <petr.horacek@wunderman.cz>
 	 * @param $userId
 	 * @return bool
 	 */
-	public function updateUserPassword($userId)
+	public function updateChangePasswordHash($userId)
 	{
+		/** @var \App\Entity\User $user */
 		$user = $this->userRespository()->find($userId);
 
-		if (! $user)
-		{
+		if (! $user) {
 			throw new InvalidUserException;
 		}
 
-		$password = $user->generateNewPassword();
+		$hashId = md5(Random::generate(32).$user->getIdentityNo());
+		$hashSecred = md5(Random::generate(32).$user->getEmail());
+		$hashExpirationDate = new DateTime('+2 Hour');
 
-		$this->mailer->sendMail('resetPassword', 'O2 navigátor Horeca - Reset uživatelského hesla', $user->getEmail(), array(
-			'password' => $password
+		$user->setHashChangePasswordId($hashId);
+		$user->setHashChangePasswordSecred($hashSecred);
+		$user->setHashChangePasswordExpirationDate($hashExpirationDate);
+		$this->entityManager->flush();
+
+
+		$this->mailer->setTemplatePath(__DIR__.'/../../templates/LostPassword/mail-resetPassword.latte');
+		$this->mailer->sendMail('Odkaz na změnu hesla', $user->getEmail(), array(
+			'hashId' => $hashId,
+			'hashSecred' => $hashSecred,
+			'hashExpirationDate' => $hashExpirationDate
 		));
-
-		return array($password);
 	}
 
 	/**

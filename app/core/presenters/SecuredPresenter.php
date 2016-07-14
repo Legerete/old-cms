@@ -2,6 +2,9 @@
 
 namespace App\Presenters;
 
+use Tracy\Debugger;
+use Tracy\Dumper;
+
 
 /**
  * Base presenter for all secured application presenters.
@@ -42,7 +45,11 @@ class SecuredPresenter extends \App\Presenters\BasePresenter
 		 */
 		$user = $this->getUser();
 		$this->getTemplate()->identity = $user->getIdentity();
-		if ( FALSE === $user->isLoggedIn() )
+
+		if (in_array($this->getName(), ['Private:Users:Sign', 'Private:Users:LostPassword'])) {
+
+		}
+		elseif ( FALSE === $user->isLoggedIn() )
 		{
 			if ( $user->getLogoutReason() === \Nette\Security\User::INACTIVITY )
 			{
@@ -57,10 +64,6 @@ class SecuredPresenter extends \App\Presenters\BasePresenter
 			if ( $user->isAllowed($this->name, $this->action) === FALSE )
 			{
 				$this->flashMessage('Nemáte dostatečná práva pro tuto akci!', 'danger');
-				$this->redirect(':Private:Dashboard:Dashboard:');
-			}
-			elseif ( $this->name == ':Private:Users:Sign' and ( $this->action == 'default' or $this->action == 'in') )
-			{
 				$this->redirect(':Private:Dashboard:Dashboard:');
 			}
 		}

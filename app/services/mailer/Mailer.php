@@ -14,6 +14,7 @@
 	use Nette\InvalidArgumentException;
 	use Nette\Mail\IMailer;
 	use Nette\Mail\Message;
+	use Tracy\Debugger;
 	use Tracy\ILogger;
 	use Nette\Bridges\ApplicationLatte\UIMacros;
 
@@ -124,7 +125,7 @@
 			$this->mailer->DKIM_selector = $this->mailerConfig['DKIM_selector'];
 			if (is_string($bcc)) $this->mailer->addBCC($bcc);
 			$this->mailer->Body = $this->createMessageTemplate();
-
+			
 
 			try
 			{

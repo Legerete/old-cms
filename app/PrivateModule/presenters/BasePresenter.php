@@ -10,63 +10,30 @@ use App\PrivateModule\AttachmentModule\Model\Service\AttachmentService;
  * PrivatePresenter
  * @author Petr Besir Horáček <sirbesir@gmail.com>
  */
-class PrivatePresenter extends BasePresenter
+class BasePresenter extends \App\Presenters\SecuredPresenter
 {
 
 	/**
 	 * @inject
-	 * @var \Kdyby\Doctrine\EntityManager
+	 * @var \WebLoader\Nette\LoaderFactory
 	 */
-	public $em;
+	public $webloaderLoaderFactory;
+
 
 	/**
-	 * @inject
-	 * @var AttachmentService
+	 * @return \WebLoader\Nette\CssLoader
 	 */
-	public $attachmentService;
-
-	/**
-	 * @inject
-	 * @var \App\PrivateModule\Components\MenuPageParts\MenuPagePartsFactory
-	 */
-	public $menuPagePartsControl;
-
-	public function startup()
+	public function createComponentCss()
 	{
-		parent::startup();
-		$this->setLayout(realpath(__DIR__.'/../templates/@layout.latte'));
+		return $this->webloaderLoaderFactory->createCssLoader('private');
 	}
 
 	/**
-	 * @return Components\MenuPageParts\MenuPagePartsControl
+	 * @return \WebLoader\Nette\JavaScriptLoader
 	 */
-	public function createComponentMenuPageParts()
+	public function createComponentJs()
 	{
-		return $this->menuPagePartsControl->create();
-	}
-
-	/**
-	 * @return PagesTree
-	 */
-	public function createComponentPagesTree()
-	{
-		return new PagesTree($this->em);
-	}
-
-	/**
-	 * @return Wysiwyg
-	 */
-	public function createComponentWysiwyg()
-	{
-		return new Wysiwyg($this->em, $this->attachmentService);
-	}
-
-	/**
-	 * @param $buttons
-	 */
-	public function setPagePartsButtons($buttons)
-	{
-		$this->getTemplate()->pagePartsButtons = $buttons;
+		return $this->webloaderLoaderFactory->createJavaScriptLoader('private');
 	}
 
 	/**

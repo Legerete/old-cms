@@ -37,15 +37,14 @@ parameters:
 php:
 	date.timezone: Europe/Prague
 
-nette:
-	application:
-		errorPresenter: Error
-		mapping:
-			*: App\*Module\Presenter\*Presenter
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenter\*Presenter
 
-	session:
-		expiration: 14 days
-		autoStart: smart
+session:
+	expiration: 14 days
+	autoStart: smart
 
 gedmo:
 	tree: on
@@ -79,6 +78,7 @@ webloader:
 			remoteFiles:
 				- https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
 			files:
+				- %wwwDir%/css/font-awesome.min.css
 				- %wwwDir%/PrivateModule/css/animate.min.css
 				- %wwwDir%/PrivateModule/css/custom.css
 				- %wwwDir%/PrivateModule/css/switchery/switchery.min.css
@@ -89,6 +89,8 @@ webloader:
 	js:
 		private:
 			remoteFiles:
-				- https://use.fontawesome.com/5268f58514.js
+
 		public:
-				files:
+			remoteFiles:
+
+			files:

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "67c5ae8695eb9088f96e0c1c857e32b7",
-    "content-hash": "ad308d2a614766b1914a7900f643b155",
+    "hash": "c1c6d91a199aa5449b81e11f704da6d9",
+    "content-hash": "c9c8a90160f60d25cdae606eff554231",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3087,17 +3087,17 @@
             "time": "2015-05-03 16:36:14"
         },
         {
-            "name": "wundermanpraha/cms-fullpageimage",
-            "version": "dev-master",
+            "name": "wundermanpraha/cms-fullpagetext",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/wundermanpraha/cms-fullpageimage.git",
-                "reference": "378c2c28ab8b1e76b3a9f8b0fd285427e309d8b6"
+                "url": "https://github.com/wundermanpraha/cms-fullpagetext.git",
+                "reference": "78b82d5630eb90b029cda4e77985d5cc2d96a5b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wundermanpraha/cms-fullpageimage/zipball/378c2c28ab8b1e76b3a9f8b0fd285427e309d8b6",
-                "reference": "378c2c28ab8b1e76b3a9f8b0fd285427e309d8b6",
+                "url": "https://api.github.com/repos/wundermanpraha/cms-fullpagetext/zipball/78b82d5630eb90b029cda4e77985d5cc2d96a5b8",
+                "reference": "78b82d5630eb90b029cda4e77985d5cc2d96a5b8",
                 "shasum": ""
             },
             "require": {
@@ -3110,7 +3110,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Wunderman\\CMS\\FullPageImage\\": "src/"
+                    "Wunderman\\CMS\\FullPageText\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3119,58 +3119,11 @@
             ],
             "authors": [
                 {
-                    "name": "Pavel Janda",
-                    "homepage": "http://paveljanda.com"
-                },
-                {
                     "name": "Petr Besir Horáček",
                     "email": "sirbesir@gmail.com"
                 }
             ],
-            "time": "2016-06-09 09:47:09"
-        },
-        {
-            "name": "wundermanpraha/cms-text",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wundermanpraha/cms-text.git",
-                "reference": "839b9d0919bc0e96db7d8ebc2c8456ba5900c4f1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wundermanpraha/cms-text/zipball/839b9d0919bc0e96db7d8ebc2c8456ba5900c4f1",
-                "reference": "839b9d0919bc0e96db7d8ebc2c8456ba5900c4f1",
-                "shasum": ""
-            },
-            "require": {
-                "nette/application": "^2.3",
-                "nette/di": "^2.3"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Wunderman\\CMS\\Text\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GNU GPL v3"
-            ],
-            "authors": [
-                {
-                    "name": "Pavel Janda",
-                    "homepage": "http://paveljanda.com"
-                },
-                {
-                    "name": "Petr Besir Horáček",
-                    "email": "sirbesir@gmail.com"
-                }
-            ],
-            "time": "2016-06-09 09:45:52"
+            "time": "2016-06-17 21:03:46"
         }
     ],
     "packages-dev": [
@@ -4898,12 +4851,12 @@
     "aliases": [],
     "minimum-stability": "beta",
     "stability-flags": {
-        "kdyby/forms-replicator": 20,
-        "wundermanpraha/cms-fullpageimage": 20,
-        "wundermanpraha/cms-text": 20
+        "kdyby/forms-replicator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6"
+    },
     "platform-dev": []
 }

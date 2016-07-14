@@ -9,19 +9,19 @@
 		<div id="login" class="animate form">
 			<section class="login_content">
 				{form signInForm, role=>'form'}
-					<h1>Login Form</h1>
+					<h1>Přihlásit se</h1>
 					<div>
-						<input n:name="username" type="text" class="form-control" placeholder="Username" required="" />
+						<input n:name="username" class="form-control" placeholder="Username" required="" />
 					</div>
 					<div>
-						<input n:name="password" type="password" class="form-control" placeholder="Password" required="" />
+						<input n:name="password" class="form-control" placeholder="Password" required="" />
 					</div>
 					<div>
-						<input n:name="send" class="btn btn-default submit" href="index.html" value="Log in">
+						<input n:name="send" class="btn btn-default submit">
+						<a class="reset_pass" n:href="LostPassword:">Zapomenuté heslo</a>
 					</div>
 					<div class="clearfix"></div>
 					<div class="separator">
-
 						<div class="clearfix"></div>
 						<br />
 						<div>
@@ -29,9 +29,7 @@
 						</div>
 					</div>
 				{/form}
-				<!-- form -->
 			</section>
-			<!-- content -->
 		</div>
 	</div>
 </div>

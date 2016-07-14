@@ -39,6 +39,21 @@ class User extends \Kdyby\Doctrine\Entities\BaseEntity
 	/**
 	 * @ORM\Column(type="string")
 	 */
+	protected $hashChangePasswordId;
+
+	/**
+	 * @ORM\Column(type="string")
+	 */
+	protected $hashChangePasswordSecred;
+
+	/**
+	 * @ORM\Column(type="string")
+	 */
+	protected $hashChangePasswordExpirationDate;
+
+	/**
+	 * @ORM\Column(type="string")
+	 */
 	protected $name;
 
 	/**
@@ -98,6 +113,21 @@ class User extends \Kdyby\Doctrine\Entities\BaseEntity
 		return $this->password;
 	}
 
+	public function getHashChangePasswordId()
+	{
+		return $this->hashChangePasswordId;
+	}
+
+	public function getHashChangePasswordSecred()
+	{
+		return $this->hashChangePasswordSecred;
+	}
+
+	public function getHashChangePasswordExpirationDate()
+	{
+		return $this->hashChangePasswordExpirationDate;
+	}
+
 	public function getName()
 	{
 		return $this->name;
@@ -155,6 +185,30 @@ class User extends \Kdyby\Doctrine\Entities\BaseEntity
 	public function setPassword($password)
 	{
 		$this->password = self::calculateHash($password);
+		
+		// vymazani hash pro zmenu hesla
+		$this->hashChangePasswordId = '';
+		$this->hashChangePasswordSecred = '';
+		$this->hashChangePasswordExpirationDate = '0000-00-00 00:00:00';
+		
+		return $this;
+	}
+
+	public function setHashChangePasswordId($hashChangePasswordId)
+	{
+		$this->hashChangePasswordId = $hashChangePasswordId;
+		return $this;
+	}
+
+	public function setHashChangePasswordSecred($hashChangePasswordSecred)
+	{
+		$this->hashChangePasswordSecred = $hashChangePasswordSecred;
+		return $this;
+	}
+	
+	public function setHashChangePasswordExpirationDate($hashChangePasswordExpirationDate)
+	{
+		$this->hashChangePasswordExpirationDate = $hashChangePasswordExpirationDate;
 		return $this;
 	}
 

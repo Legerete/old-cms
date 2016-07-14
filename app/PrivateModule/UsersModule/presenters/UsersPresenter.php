@@ -2,11 +2,13 @@
 
 namespace App\PrivateModule\UsersModule\Presenter;
 
+use App\PrivateModule\BasePresenter;
+
 /**
  * UsersPresenter
  * @author Petr Besir Horáček <sirbesir@gmail.com>
  */
-class UsersPresenter extends \App\Presenters\SecuredPresenter
+class UsersPresenter extends BasePresenter
 {
 
 	use \Besir\CRUDTrait;
