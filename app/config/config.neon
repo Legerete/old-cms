@@ -86,11 +86,19 @@ webloader:
 				- %wwwDir%/PrivateModule/css/kendo/kendo.common-bootstrap.css
 				- %wwwDir%/PrivateModule/css/kendo/kendo.common-bootstrap.core.css
 				- %wwwDir%/PrivateModule/css/kendo/kendo.bootstrap.css
+				- %wwwDir%/PrivateModule/css/ublaboo/datagrid.css
+				- %wwwDir%/PrivateModule/css/ublaboo/datagrid-spinners.css
+				- %wwwDir%/PrivateModule/css/admin.css
 	js:
 		private:
 			remoteFiles:
+
+			files:
+				- %wwwDir%/PrivateModule/js/admin.js
 
 		public:
 			remoteFiles:
 
 			files:
+				- %wwwDir%/PrivateModule/js/ublaboo/datagrid.js
+				- %wwwDir%/PrivateModule/js/ublaboo/datagrid-spinners.js

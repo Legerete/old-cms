@@ -1,0 +1,7 @@
+<div class="form-group" n:if="isset($input)">
+    {label $input class => 'control-label col-md-3 col-sm-3 col-xs-12' /}
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        {input $input class => 'form-control'.(($input->errors) ? ' parsley-error' : '')}
+        {include 'inlineError.latte', 'input' => $input}
+    </div>
+</div>

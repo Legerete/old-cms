@@ -51,10 +51,16 @@ class LostPasswordPresenter extends BasePresenter
 	 */
 	public function lostPasswordFormSubmitted(\Nette\Application\UI\Form $form, $values)
 	{
+		/** @var User $user */
 		$user = $this->model->findUser($values['username']);
 
+		if ($user->getStatus() !== 'ok') {
+			$this->flashMessage('Uživatel je smazán, nelze obnovit heslo', 'error');
+			$this->redirect('this');
+		}
+
 		if (!$user) {
-			$this->flashMessage('Uživatel s tímto jménem neexistuje');
+			$this->flashMessage('Uživatel s tímto jménem neexistuje', 'error');
 			$this->redirect('this');
 		}
 

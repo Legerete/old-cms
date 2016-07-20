@@ -1,0 +1,3 @@
+<ul n:if="$input->errors" class="parsley-errors-list filled" n:inner-foreach="$input->errors as $e">
+    <li class="parsley-required">{$e}</li>
+</ul>

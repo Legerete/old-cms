@@ -22,6 +22,7 @@
 	<script src="PrivateModule/js/jquery.min.js"></script>
 	<script src="PrivateModule/js/nprogress.js"></script>
 	<script src="PrivateModule/js/nette.ajax.js"></script>
+
 	<script>
 		NProgress.start();
 	</script>
@@ -85,15 +86,16 @@
 							<li class="">
 								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									Admin
-									<span class=" fa fa-angle-down"></span>
+									<span class="fa fa-angle-down"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
 									<li><a n:href=":Private:Users:Sign:out"><i class="fa fa-sign-out pull-right"></i> Logout</a>
 									</li>
 								</ul>
 							</li>
-
-
+							<li>
+								<a n:href=":Private:Users:List:">Uživatelé</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -132,7 +134,7 @@
 		<div id="notif-group" class="tabbed_notifications"></div>
 	</div>
 
-	<script src="PrivateModule/js/bootstrap.min.js"></script>
+	<script src="PrivateModule/js/bootstrap.js"></script>
 
 	<script src="PrivateModule/js/switchery/switchery.min.js"></script>
 

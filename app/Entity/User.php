@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
+use Nette;
 
 /**
  * @ORM\Entity
@@ -65,6 +66,7 @@ class User extends \Kdyby\Doctrine\Entities\BaseEntity
 	 * @ORM\Column(type="string")
 	 */
 	protected $email;
+	
 
 	/**
 	 * @ORM\Column(type="string")
@@ -142,6 +144,7 @@ class User extends \Kdyby\Doctrine\Entities\BaseEntity
 	{
 		return $this->email;
 	}
+	
 
 	public function getRole()
 	{

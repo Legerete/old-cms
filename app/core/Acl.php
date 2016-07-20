@@ -43,6 +43,7 @@ class Acl extends \Nette\Security\Permission
 
 		$this->addResource('Private:Users:Sign');
 		$this->addResource('Private:Users:Users');
+		$this->addResource('Private:Users:List');
 
 		$this->addResource('Private:Pages:NewPage');
 		$this->addResource('Private:Pages:TextPage');

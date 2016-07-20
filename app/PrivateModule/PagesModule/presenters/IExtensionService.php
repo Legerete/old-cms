@@ -19,7 +19,7 @@
 		/**
 		 * Prepare adding new item, add imputs to global form etc.
 		 *
-		 * @param Form $button
+		 * @param Form $form
 		 *
 		 * @return mixed
 		 */
@@ -27,7 +27,7 @@
 
 		/**
 		 * @param Form $form
-		 * @param array $editItemsParams
+		 * @param array $editItemParams
 		 *
 		 * @return mixed
 		 */

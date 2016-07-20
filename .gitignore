@@ -1,5 +1,6 @@
 app/config/config.local.neon
 vendor/*
+vendor-dev/*
 !vendor/other
 .idea
 nbproject/*
