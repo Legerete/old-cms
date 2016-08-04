@@ -151,6 +151,9 @@ CREATE TABLE `user` (
   `identity_no` varchar(40) CHARACTER SET utf8 COLLATE utf8_czech_ci DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(150) NOT NULL,
+  `hash_change_password_id` varchar(32) NOT NULL,
+  `hash_change_password_secred` varchar(32) NOT NULL,
+  `hash_change_password_expiration_date` datetime NOT NULL,
   `name` varchar(150) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
   `surname` varchar(150) NOT NULL,
   `phone` varchar(16) NOT NULL,
@@ -165,7 +168,7 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_2` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`id`, `identity_no`, `username`, `password`, `name`, `surname`, `phone`, `email`, `organization_id`, `role`, `status`) VALUES
-(1,	'KHOHOHOIHIOhiohoHOHIUOIhoHIIOHOHOHOhoHOH',	'root',	'$2a$07$2kkmkh73splfeh79fh8obedQxrK8FFqyIvWUEz2BrVfTgMXW.ObSa',	'Admin',	'Istrator',	'',	'email@example.com',	NULL,	'admin',	'ok');
+INSERT INTO `user` (`id`, `identity_no`, `username`, `password`, `hash_change_password_id`, `hash_change_password_secred`, `hash_change_password_expiration_date`, `name`, `surname`, `phone`, `email`, `organization_id`, `role`, `status`) VALUES
+(1,	'KHOHOHOIHIOhiohoHOHIUOIhoHIIOHOHOHOhoHOH',	'root',	'$2a$07$2kkmkh73splfeh79fh8obedQxrK8FFqyIvWUEz2BrVfTgMXW.ObSa',	'',	'',	'0000-00-00 00:00:00',	'Admin',	'Istrator',	'',	'email@example.com',	NULL,	'admin',	'ok');
 
--- 2016-06-16 07:13:31
+-- 2016-08-04 12:42:11
