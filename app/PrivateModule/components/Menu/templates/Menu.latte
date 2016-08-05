@@ -33,16 +33,16 @@
 						$current ? $current
 				">
 				{if $item->rgt > $item->lft +1}
-					<a n:class="$current ? $current"
+					<a n:class="$current ? $current" title="{$item->name}"
 					   href="{plink ':Private:Pages:EditPage:' id=>$item->id}">
 						<i n:class="fa, $item->published ? 'fa-eye text-success', !$item->published ? 'fa-eye-slash text-warning'"></i>
-						{$item->name}
+						{$item->name|truncate:15}
 						<span n:class="fa, $item->homepage ? 'fa-home'"></span>
 					</a>
 				{else}
-					<a href="{plink ':Private:Pages:EditPage:' id=>$item->id}" n:class="$current ? $current">
+					<a href="{plink ':Private:Pages:EditPage:' id=>$item->id}" n:class="$current ? $current" title="{$item->name}">
 						<i n:class="fa, $item->published ? 'fa-eye text-success', !$item->published ? 'fa-eye-slash text-warning'"></i>
-						{$item->name}
+						{$item->name|truncate:15}
 						<span n:class="fa, $item->homepage ? 'fa-home'"></span>
 					</a>
 				{/if}
