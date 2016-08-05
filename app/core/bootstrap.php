@@ -16,7 +16,7 @@ $configurator->setTempDirectory(__DIR__ . '/../../tmp');
 $configurator->createRobotLoader()
 	->addDirectory(__DIR__ . '/..')
 	->addDirectory(realpath(__DIR__ . '/../../vendor/other'))
-	->addDirectory(realpath(__DIR__ . '/../../vendor/gedmo/doctrine-extensions/lib'))
+//	->addDirectory(realpath(__DIR__ . '/../../vendor/gedmo/doctrine-extensions/lib'))
 	->register();
 
 $configurator->addConfig(__DIR__ . '/../config/config.neon');
