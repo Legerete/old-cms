@@ -30,12 +30,12 @@
 			<div class="col-lg-8">
 				<div class="x_panel">
 					<div class="x_content">
-						{include pageContent _form=>$_form}
+						{include pageContent form=>$form}
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				{ifset #pageRight}{include pageRight _form=>$_form}{/ifset}
+				{ifset #pageRight}{include pageRight form=>$form}{/ifset}
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>Page settings</h2>

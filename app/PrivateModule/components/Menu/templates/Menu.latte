@@ -19,7 +19,7 @@
 				{if $depth < $item->depth}
 					<ul class="nav child_menu" role="menu">
 				{else}
-					{!"</li>\n</ul>\n"|repeat:($depth - $item->depth)}</li>
+					{("</li></ul>")|noescape|repeat:($depth - $item->depth)}</li>
 				{/if}
 			{/if}
 			{var $linkParams = \Nette\Utils\Json::Decode($item->params, \Nette\Utils\Json::FORCE_ARRAY)}
@@ -48,7 +48,7 @@
 				{/if}
 				{var $depth = $item->depth}
 			{/foreach}
-			{!"</li>\n</ul>"|repeat:($depth +1)}
+			{("</li></ul>")|noescape|repeat:($depth +1)}
 		</ul>
 
 	</li>

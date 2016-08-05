@@ -4,7 +4,7 @@
 <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/PrivateModule/css/administrable.css">
 <div class="row" id="adminComposedPage">
 	<div class="col-lg-12">
-		{foreach $_form['addButtons']->getComponents() as $component}
+		{foreach $form['addButtons']->getComponents() as $component}
 			<button
 					class="btn btn-success btn-sm"
 					n:name="addButtons-$component->name"
@@ -27,7 +27,7 @@
 						<p><br><i class="glyphicon glyphicon-info-sign"></i> <strong>Adding new item</strong>: This item will be passed as last of items after save.</p>
 					</div>
 				</div>
-				{include $addItemTemplate _form => $_form, $itemContainer => $itemContainer}
+				{include $addItemTemplate form => $form, $itemContainer => $itemContainer}
 
 				<div class="row">
 					<div class="col-lg-12">
@@ -46,7 +46,7 @@
 				{if isset($editItemTemplate) && isset($editedItem) && $editedItem->id == $item->id}
 					<br>
 					<div class="col-lg-11">
-						{include $editItemTemplate _form=>$_form, editedItem=>$editedItem, $itemContainer => $itemContainer}
+						{include $editItemTemplate form=>$form, editedItem=>$editedItem, $itemContainer => $itemContainer}
 					</div>
 					<div class="col-lg-1">
 						<a name="editItem{$item->getId()}"></a>

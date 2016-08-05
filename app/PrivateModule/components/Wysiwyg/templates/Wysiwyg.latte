@@ -3,7 +3,7 @@
  *}
 {block content}
 <script type="text/javascript">
-	{capture $imageNameKey}{? echo "{0}" }{/capture}
+	{capture $imageNameKey}{php echo "{0}" }{/capture}
 	$(document).ready(function() {
 		// create Editor from textarea HTML element with default set of tools
 		$('textarea[name="content"], textarea.wysiwyg').kendoEditor({
