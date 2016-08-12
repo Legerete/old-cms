@@ -135,6 +135,7 @@ final class ComposePresenter extends PagePresenter implements IPage
 			throw new InvalidArgumentException('Composed page not found for Menu Item '.$this->menuItem->getName());
 		}
 
+		/** @var ArrayCollection|ComposeArticleItem[] composeArticleItems */
 		$this->composeArticleItems = $this->composeArticle->getItems();
 	}
 
