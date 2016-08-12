@@ -57,6 +57,7 @@ doctrine:
 	dbname: ''
 	metadata:
 		App: %appDir%
+		Wunderman\CMS: %appDir%/../../vendor
 
 monolog:
 	handlers:
