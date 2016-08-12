@@ -361,11 +361,6 @@ final class ComposePresenter extends PagePresenter implements IPage
 
 	private function addEditItemParams()
 	{
-		if (isset($this->form[IExtensionService::ITEM_CONTAINER])) {
-			unset($this->form[IExtensionService::ITEM_CONTAINER]);
-		}
-		$this->form->addContainer(IExtensionService::ITEM_CONTAINER);
-
 		$this->getService()->editItemParams($this->form, $this->editItem);
 	}
 
