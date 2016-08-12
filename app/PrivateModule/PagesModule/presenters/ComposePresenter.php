@@ -311,10 +311,8 @@ final class ComposePresenter extends PagePresenter implements IPage
 
 			$addButton = $addButtons->addSubmit($key, $buttonText);
 			$addButton->setValidationScope(FALSE)->onClick[] = function (SubmitButton $button
-			) use ($key, $form, $presenter) {
+			) use ($key, $presenter) {
 				$this->editItem = null;
-
-				$form = $button->getForm();
 
 				$presenter->setService($key);
 
