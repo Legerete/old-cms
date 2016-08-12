@@ -103,11 +103,11 @@ class UrlPagePresenter extends PagePresenter
 		try {
 			if ($this->getAction() === 'edit')
 			{
-				$this->editPage($form->getValues());
+				$this->editPage($form, $form->getValues());
 			}
 			elseif ($this->getAction() === 'default')
 			{
-				$this->createPage($form->getValues());
+				$this->createPage($form, $form->getValues());
 			}
 
 			$this->flashMessage('Page was saved.', 'success');

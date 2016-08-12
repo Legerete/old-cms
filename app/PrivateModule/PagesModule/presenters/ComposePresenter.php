@@ -7,6 +7,7 @@ use App\Entity\ComposeArticleItem;
 use App\Entity\ComposeArticleItemParam;
 use App\Entity\MenuItem;
 use App\PrivateModule\PagesModule\Component\ComponentWrapperFactory;
+use Doctrine\Common\Collections\ArrayCollection;
 use Nette\Application\BadRequestException;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\SubmitButton;
@@ -253,11 +254,14 @@ final class ComposePresenter extends PagePresenter implements IPage
 	 */
 	public function createComponentPageForm($name)
 	{
+		/** @var Form form */
 		$this->form = $this->createBaseForm($name);
-
 		$this->registerExtensionsButtons();
 
-		if ($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER) && !isset($this->form[IExtensionService::ITEM_CONTAINER]))
+		if (!isset($this->form[IExtensionService::ITEM_CONTAINER])) {
+			$this->form->addContainer(IExtensionService::ITEM_CONTAINER);
+		}
+		if ($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER))
 		{
 			$this->setService($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['type']);
 			$this->addNewItem($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['type']);
@@ -353,24 +357,19 @@ final class ComposePresenter extends PagePresenter implements IPage
 
 	private function addEditItemParams()
 	{
-		if(isset($this->form[IExtensionService::ITEM_CONTAINER])) {
+		if (isset($this->form[IExtensionService::ITEM_CONTAINER])) {
 			unset($this->form[IExtensionService::ITEM_CONTAINER]);
 		}
+		$this->form->addContainer(IExtensionService::ITEM_CONTAINER);
 
 		$this->getService()->editItemParams($this->form, $this->editItem);
 	}
 
 	/**
-	 * @return Multiplier
+	 * @param string $name
+	 *
+	 * @return Nette\ComponentModel\IComponent
 	 */
-	public function createComponentComponentWrapper()
-	{
-		return new  Multiplier(function() {
-			return $this->componentsWrapperFactory->create();
-		});
-	}
-
-
 	public function createComponent($name)
 	{
 		try {
@@ -407,16 +406,8 @@ final class ComposePresenter extends PagePresenter implements IPage
 		throw new ComposePresenterException;
 	}
 
-
-	/**
-	 * @param string $type
-	 */
-	public function addNewItem($type)
+	public function addNewItem()
 	{
-		if(isset($this->form[IExtensionService::ITEM_CONTAINER])) {
-			unset($this->form[IExtensionService::ITEM_CONTAINER]);
-		}
-
 		$service = $this->getService();
 		$service->addItem($this->form);
 	}

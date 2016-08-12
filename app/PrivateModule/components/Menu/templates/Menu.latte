@@ -22,10 +22,6 @@
 					{("</li></ul>")|noescape|repeat:($depth - $item->depth)}</li>
 				{/if}
 			{/if}
-			{var $linkParams = \Nette\Utils\Json::Decode($item->params, \Nette\Utils\Json::FORCE_ARRAY)}
-			{if is_array($linkParams)}
-				{ifCurrent ':'.$item->presenter.':'.$item->action (expand)$linkParams}{var $current='active'}{/ifCurrent}
-			{/if}
 			<li
 				n:class="isset($item->params->class) ? $item->params->class,
 						($item->depth > 0) ? 'depth-'.$item->depth,

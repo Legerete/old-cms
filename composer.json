@@ -38,7 +38,6 @@
         "wundermanpraha/cms-text": "dev-master",
         "wundermanpraha/cms-youtubevideo": "dev-master",
         "wundermanpraha/cms-fullpageimage": "dev-master",
-        "wundermanpraha/cms-carousel": "dev-master",
 
         "ublaboo/datagrid": "^4.4"
     },
