@@ -322,7 +322,7 @@ final class ComposePresenter extends PagePresenter implements IPage
 				}
 
 				$presenter->getTemplate()->addItemTemplate = $presenter->getService()->getAddItemTemplate();
-				$presenter->getService()->addItem($form);
+				$presenter->addNewItem();
 			};
 
 			if (isset($tooltip)) $addButton->setAttribute('title', $tooltip);
