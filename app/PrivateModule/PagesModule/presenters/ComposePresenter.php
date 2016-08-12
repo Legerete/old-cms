@@ -261,10 +261,15 @@ final class ComposePresenter extends PagePresenter implements IPage
 		if (!isset($this->form[IExtensionService::ITEM_CONTAINER])) {
 			$this->form->addContainer(IExtensionService::ITEM_CONTAINER);
 		}
-		if ($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER))
+		if ($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER) && empty($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['itemId']))
 		{
 			$this->setService($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['type']);
 			$this->addNewItem($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['type']);
+		}
+		elseif ($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER) && !empty($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['itemId'])) {
+			$this->setService($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['type']);
+			$this->editItem = $this->composeArticleItemRepository()->find($this->getHttpRequest()->getPost(IExtensionService::ITEM_CONTAINER)['itemId']);
+			$this->addEditItemParams();
 		}
 
 		$this->form->addText('keywords', 'Keywords');
