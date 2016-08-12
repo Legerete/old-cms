@@ -381,6 +381,10 @@ final class ComposePresenter extends PagePresenter implements IPage
 	}
 
 
+	/**
+	 * @param string $name
+	 * @param object $factory
+	 */
 	public function setComposeComponentFactory($name, $factory)
 	{
 		$this->composeComponentFactories[$name] = $factory;

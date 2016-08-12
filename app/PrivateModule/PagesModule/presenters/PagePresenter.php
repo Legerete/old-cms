@@ -72,9 +72,7 @@ class PagePresenter extends \App\PrivateModule\PrivatePresenter implements IPage
 	}
 
 	/**
-	 * @param $id
-	 *
-	 * @throws \Nette\Utils\JsonException
+	 * @param int $id
 	 */
 	public function actionEdit($id)
 	{
@@ -94,6 +92,9 @@ class PagePresenter extends \App\PrivateModule\PrivatePresenter implements IPage
 	{
 	}
 
+	/**
+	 * @param int $id
+	 */
 	public function actionDelete($id)
 	{
 		$this->menuItemRepository()->find($id)->setUrl(NULL)->delete();
